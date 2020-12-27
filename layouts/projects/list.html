@@ -1,0 +1,53 @@
+{{ define "main" }}
+
+<div class="row">
+    <div class="col-lg-4 project--navbar--titles h-100">
+        <!-- navbar secondary -->
+        <div class="navbar--secondary">
+            <nav class="navbar navbar-expand-lg navbar-light p-0">
+                <div class="container-fluid p-0">
+                    <ul class="navbar-nav">
+                        <li class="nav-item">
+                            <a class="text-dark active" href="/projects">이름</a>
+                            {{ readFile "/themes/baanstudio-theme/static/icons/ionic-swap.svg" | safeHTML }}
+                        </li>
+                        <li class="nav-item ml-4">
+                            <a class="text-dark" href="/projects">시간</a>
+                            {{ readFile "/themes/baanstudio-theme/static/icons/ionic-swap.svg" | safeHTML }}
+                        </li>
+                        <li class="nav-item ml-4">
+                            <a class="text-dark active" href="/projects">분류</a>
+                            <ul class="list-unstyled">
+                                {{ range .Site.Data.types }}
+                                {{ range $key, $value := . }}<li>{{ $value }} / {{ humanize $key }}</li>{{ end}}
+                                {{ end }}
+                            </ul>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+        <ul class="list-unstyled">
+            {{ range  where site.RegularPages "Type" "projects" }}
+            <li>
+                <div class="year float-right pr-3">{{ .Params.year }}</div>
+                <a class="text-dark" href="{{ .Permalink }}">{{ .Title }}</a>
+            </li>
+            {{ end }}
+        </ul>
+    </div>
+    <div class="col-lg-8 block--content">
+        <div class="row">
+            {{ range (seq 14) }}
+            <div class="col-md-6 card--project">
+                <a class="text-muted" href="/projects/상하농원/">
+                    <img class="img-fluid" src="/images/project@2x.jpg" alt="" /><br>
+                    <span>상하목장</span>
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+</div>
+
+{{ end }}

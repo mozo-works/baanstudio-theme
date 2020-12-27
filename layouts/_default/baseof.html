@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>
+    {{ partial "head.html" . }}
+</head>
+<body>
+    <div class="container-fluid g-0 layout">
+        {{ block "header" . }}{{ partial "header" . }}{{end}}
+        {{ block "main" . }}{{end}}
+        {{ block "footer" . }}{{ partial "footer" . }}{{end}}
+    </div>
+    <div id="fast-search">
+        <input id="search-input" tabindex="0">
+        <ul id="search-results"></ul>
+    </div>
+    {{ $packages := resources.Match "vendor/*.js" | resources.Concat "js/bundle.js" | minify }}
+    {{ $fastsearch := resources.Get "fastsearch.js" | js.Build "js/fastsearch.js" | minify }}
+    {{ $main := resources.Get "main.js" | js.Build "js/main.js" | minify }}
+    <script src="https://cdn.polyfill.io/v3/polyfill.min.js" defer></script>
+    <script src="{{ $packages.RelPermalink }}" defer></script>
+    <script src="{{ $fastsearch.RelPermalink }}" defer></script>
+    <script src="{{ $main.RelPermalink }}" defer></script>
+</body>
+</html>

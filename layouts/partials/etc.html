@@ -1,0 +1,9 @@
+<div class="row same-height">
+    <div class="col project--navbar--titles">
+        <ul class="list-unstyled d-block">
+            {{ range $index, $value := .Site.Data.projects }}
+            <li><a class="text-dark{{ if (eq $index 0) }} text-decoration-line-through{{ end }}" href="#">{{ $value }}</a></li>
+            {{ end }}
+        </ul>
+    </div>
+</div>

@@ -1,0 +1,32 @@
+/*!
+ * Customized based on Bootstrap v4.5.3 (https://getbootstrap.com/)
+ */
+
+// 테마 색상 추가 시
+// https://github.com/twbs/bootstrap/issues/23908#issuecomment-336862134
+@import "../node_modules/bootstrap/scss/functions";
+@import "../node_modules/bootstrap/scss/variables";
+// $theme-colors: map-merge($theme-colors, (
+//   highlight: $primary
+// ));
+// @debug $theme-colors;
+
+$link-color: $black;
+$link-decoration: none;
+
+// $font-size-base: 0.75rem; // 12px
+$font-size-base: 0.875rem; // 14px
+$font-size-sm: $font-size-base * .875;
+$font-size-lg: $font-size-base * 1.25;
+
+$font-family-base: "Gothic A1", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+
+$line-height-base: 2;
+$line-height-sm: 1.25;
+$line-height-lg: 2;
+
+$grid-gutter-width: 1.25rem;
+
+$border-color: $gray-600;
+
+@import "../node_modules/bootstrap/scss/bootstrap";

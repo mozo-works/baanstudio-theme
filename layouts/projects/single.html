@@ -1,0 +1,36 @@
+{{ define "main" }}
+
+<div class="row block--content">
+    <div class="col-lg-4 project--description">
+        <ul class="list-unstyled">
+            <li><span class="active">{{ .Title }}</span></li>
+            {{ with .Params.clients }}{{ $len := (len .) }}<li>{{ range $index, $client := . }}<a target="_blank" href="{{ $client.link }}">{{ $client.name }}</a>{{ if ne (add $index 1) $len }}, {{ end }}{{ end }}</li>{{ end }}
+            <li>{{ .Params.year }}. {{ .Params.month }}.</li>
+            {{ range .Params.meta }}{{ range $key, $value := . }}<li>{{ $key }}: {{ $value }}</li>{{ end }}{{ end }}
+        </ul>
+        {{ .Content }}
+    </div>
+    <div class="col-lg-6 offset-md-1">
+        <div class="row">
+            {{ range (seq 6) }}
+            <div class="card--project">
+                <a class="text-muted" href="#">
+                    <img class="img-fluid" src="/images/project@2x.jpg" alt="" /><br>
+                    <span>상하목장</span>
+                </a>
+            </div>
+            {{ end }}
+        </div>
+    </div>
+    <div class="col-lg-1">
+        <ul class="list-unstyled text-right">
+        {{ range $index, $row := .Site.Data.types }}
+        {{ range $key, $value := $row }}<li>{{ if eq $index 0}}<span class="active">{{ end }}{{ $value }}{{ if eq $index 0}}</span>{{ end }}</li>{{ end }}
+        {{ end}}
+        </ul>
+    </div>
+</div>
+
+{{ partial "project-navbar.html" . }}
+
+{{ end }}
