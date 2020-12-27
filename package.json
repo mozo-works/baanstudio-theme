@@ -9,10 +9,12 @@
   "author": "",
   "license": "MIT",
   "devDependencies": {
-    "bootstrap": "^4.5",
     "autoprefixer": "^10",
     "postcss": "^8",
     "postcss-cli": "^8",
     "postcss-purgecss": "^2"
+  },
+  "dependencies": {
+    "bootstrap": "^4.5.3"
   }
 }
